@@ -1,5 +1,9 @@
 # CineTrust 🎬
 
+**[Live demo →](https://theoriginalsam.github.io/cinetrust/)** · refreshed daily from the Databricks pipeline
+
+![ci](https://github.com/theoriginalsam/cinetrust/actions/workflows/ci.yml/badge.svg) ![pages](https://github.com/theoriginalsam/cinetrust/actions/workflows/pages.yml/badge.svg)
+
 **Farm-resistant movie ratings for films in theatres right now, built on Databricks.**
 
 Single-platform ratings are easy to game: review bombs sink good films, paid campaigns inflate
