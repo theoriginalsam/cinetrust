@@ -20,6 +20,12 @@ const SORTS = {
   liked: ["Most liked", (a, b) => (b.likes ?? 0) - (a.likes ?? 0)],
 };
 const PAGE = 25;
+// Static mode (GitHub Pages): same UI, data from pre-exported JSON instead of the live API.
+const STATIC = document.documentElement.dataset.static === "1";
+const API = {
+  home: () => (STATIC ? "data/home.json" : "api/home"),
+  movie: (id) => (STATIC ? `data/movie/${encodeURIComponent(id)}.json` : `api/movie/${encodeURIComponent(id)}`),
+};
 
 const view = document.getElementById("view");
 const search = document.getElementById("search");
@@ -147,7 +153,7 @@ async function renderHome(tab) {
   setTab(tab);
   if (!home) {
     view.innerHTML = `<div class="skeleton" style="height:60vh"></div>`;
-    home = await getJSON("/api/home");
+    home = await getJSON(API.home());
   }
   const upcoming = tab === "upcoming";
   const list = upcoming ? home.upcoming : home.now_playing;
@@ -249,7 +255,7 @@ async function renderMovie(id, params) {
   view.innerHTML = `<div class="skeleton" style="height:520px"></div>`;
   let d;
   try {
-    d = await getJSON(`/api/movie/${encodeURIComponent(id)}`);
+    d = await getJSON(API.movie(id));
   } catch (e) {
     view.innerHTML = `<div class="error"><h2>Movie not found</h2><p>${esc(e.message)}</p><a class="btn btn-primary" href="#/">Back to movies</a></div>`;
     return;

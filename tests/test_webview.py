@@ -50,3 +50,19 @@ def test_reviews_payload_labels_good_and_bad_by_rating_then_sentiment():
 
 def test_polarity_thresholds():
     assert polarity(65) == "positive" and polarity(50) == "mixed" and polarity(40) == "negative"
+
+
+def test_write_static_mirrors_the_api(tmp_path):
+    from cinetrust.webview import write_static
+
+    playing = pd.DataFrame([{"imdb_id": "tt1", "title": "A", "cinetrust_score": 80.0,
+                             "breakdown": "{}", "n_reviews": 1, "n_suspicious_reviews": 0}])
+    upcoming = pd.DataFrame([{"imdb_id": "tt2", "title": "B", "release_date": "2026-12-01"}])
+    reviews = pd.DataFrame([{"imdb_id": "tt1", "source": "tmdb", "rating": 8.0, "text": "good", "trust": 1.0}])
+    (tmp_path / "movie").mkdir()
+    (tmp_path / "movie" / "tt_old.json").write_text("{}")   # a movie that left theatres
+    write_static(tmp_path, playing, upcoming, reviews)
+    assert sorted(p.name for p in (tmp_path / "movie").iterdir()) == ["tt1.json", "tt2.json"]
+    doc = json.loads((tmp_path / "movie" / "tt1.json").read_text())
+    assert doc["movie"]["title"] == "A" and doc["reviews"][0]["polarity"] == "positive"
+    assert json.loads((tmp_path / "movie" / "tt2.json").read_text())["reviews"] == []

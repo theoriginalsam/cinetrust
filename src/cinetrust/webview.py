@@ -152,3 +152,25 @@ def reviews_payload(reviews: pd.DataFrame) -> dict:
         "polarity": {p: sum(r["polarity"] == p for r in out) for p in ("positive", "mixed", "negative")},
         "down_weighted": sum((r["trust"] or 1) < SUSPICIOUS_TRUST for r in out),
     }
+
+
+def write_static(out_dir, now_playing: pd.DataFrame, upcoming: pd.DataFrame,
+                 reviews: pd.DataFrame, *, demo: bool = False) -> dict:
+    """Write the files the static site reads: home.json + movie/<imdb_id>.json.
+
+    Mirrors the app's /api/home and /api/movie/{id} responses, so one frontend serves both.
+    `reviews` holds every review (all movies) with an imdb_id column.
+    """
+    import shutil
+    from pathlib import Path
+
+    out = Path(out_dir)
+    shutil.rmtree(out / "movie", ignore_errors=True)  # drop movies that left theatres
+    (out / "movie").mkdir(parents=True, exist_ok=True)
+    home = home_payload(now_playing, upcoming, demo=demo)
+    (out / "home.json").write_text(json.dumps(home, ensure_ascii=False))
+    by_movie = dict(tuple(reviews.groupby("imdb_id"))) if not reviews.empty else {}
+    for m in home["now_playing"] + home["upcoming"]:
+        doc = {"movie": m, **reviews_payload(by_movie.get(m["imdb_id"], reviews.iloc[0:0]))}
+        (out / "movie" / f"{m['imdb_id']}.json").write_text(json.dumps(doc, ensure_ascii=False))
+    return home

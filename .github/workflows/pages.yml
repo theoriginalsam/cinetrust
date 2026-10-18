@@ -1,0 +1,70 @@
+# Public live demo on GitHub Pages: the app's frontend + data exported by the daily Databricks job.
+# Data is deployed as a Pages artifact (never committed) and refreshed daily. Without the
+# DATABRICKS_TOKEN secret the site falls back to synthetic demo data.
+name: pages
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 7 * * *"   # after the 06:00 UTC cinetrust-daily job
+  push:
+    branches: [main]
+    paths:
+      - "app/static/**"
+      - "src/cinetrust/webview.py"
+      - "scripts/build_static_data.py"
+      - ".github/workflows/pages.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+      SITE_VOLUME: dbfs:/Volumes/workspace/cinetrust/site/web
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -r app/static _site/static
+          sed 's/<html lang="en">/<html lang="en" data-static="1">/' app/static/index.html > _site/index.html
+          touch _site/.nojekyll
+
+      - name: Install Databricks CLI
+        if: env.DATABRICKS_TOKEN != ''
+        uses: databricks/setup-cli@main
+
+      - name: Live data from Databricks
+        if: env.DATABRICKS_TOKEN != ''
+        run: databricks fs cp -r "$SITE_VOLUME" _site/data --overwrite
+
+      - name: Demo data fallback
+        if: env.DATABRICKS_TOKEN == ''
+        run: |
+          pip install -q -e .
+          python scripts/build_static_data.py _site/data
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -29,6 +29,7 @@ def main(argv=None) -> None:
 
     from cinetrust.platform import fq, get_spark
     from cinetrust.site_export import SUSPICIOUS_TRUST, build_leaderboard
+    from cinetrust.webview import write_static
 
     spark = get_spark()
     def t(name):
@@ -46,6 +47,26 @@ def main(argv=None) -> None:
     out.write_text(json.dumps(doc, ensure_ascii=False, indent=1))
     n_flagged = sum(len(m["flagged_reviews"]) for m in doc["movies"])
     print(f"Wrote {out}: {len(doc['movies'])} movies, {n_flagged} flagged reviews")
+
+    # Data for the public live demo (GitHub Pages): same payloads as the Databricks App's API.
+    playing = spark.sql(f"""
+        SELECT s.*, m.release_date, m.poster_path, m.backdrop_path, m.overview, m.genres,
+               m.runtime, m.trailer_key
+        FROM {t('gold_movie_scores')} s JOIN {t('gold_now_playing')} m USING (imdb_id)""").toPandas()
+    try:
+        upcoming = spark.sql(f"""
+            SELECT u.*, h.hype_score, h.hype_confidence, h.buzz_7d, h.n_comments,
+                   h.n_suspicious_reviews, h.farming_alert
+            FROM {t('gold_upcoming')} u LEFT JOIN {t('gold_upcoming_hype')} h USING (imdb_id)""").toPandas()
+    except Exception:  # no hype table until a scoring run has seen upcoming movies
+        upcoming = spark.table(t("gold_upcoming")).toPandas()
+    all_reviews = spark.sql(f"""
+        SELECT t.imdb_id, r.source, r.author_name, r.rating, t.sentiment, r.text, r.created_at,
+               r.url, r.likes, t.trust, t.reasons
+        FROM {t('gold_review_trust')} t JOIN {t('silver_reviews')} r USING (review_id)""").toPandas()
+    web_dir = out.parent / "web"
+    home = write_static(web_dir, playing, upcoming, all_reviews)
+    print(f"Wrote {web_dir}: {len(home['now_playing'])} in theatres, {len(home['upcoming'])} upcoming")
 
 
 if __name__ == "__main__":
