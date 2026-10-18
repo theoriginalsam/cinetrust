@@ -1,0 +1,8 @@
+# Databricks App runtime deps (app/main.py), pinned to the versions tested locally.
+# Library/dev deps live in pyproject.toml.
+fastapi==0.143.3
+uvicorn==0.54.0
+databricks-sql-connector==4.6.0
+databricks-sdk==0.153.0
+pandas==3.0.6
+pyarrow==25.0.1

@@ -1,0 +1,31 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv venv --python 3.11 && uv pip install -e ".[dev]"
+      - run: uv run ruff check src tests jobs scripts pipelines
+      - run: uv run pytest -q
+      - run: uv run python scripts/local_demo.py --quiet
+
+  deploy:
+    # Runs only on main and only when workspace credentials are configured as repo secrets.
+    needs: test
+    if: github.ref == 'refs/heads/main' && vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    env:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: databricks/setup-cli@main
+      - run: databricks bundle validate -t prod
+      - run: databricks bundle deploy -t prod

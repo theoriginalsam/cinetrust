@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CineTrust</title>
+  <meta name="description" content="Ratings for movies in theatres right now, combined from several sources, with fake and farmed reviews filtered out.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <h1>🎬 CineTrust</h1>
+      <p>Ratings for movies in theatres right now, combined from several sources, with fake and farmed reviews filtered out.</p>
+    </header>
+
+    <div id="banner" class="banner" hidden></div>
+
+    <section class="kpis" id="kpis" aria-label="Summary"></section>
+
+    <section class="controls" aria-label="Filters">
+      <input id="q" type="search" placeholder="Search a movie…" aria-label="Search a movie">
+      <select id="sort" aria-label="Sort">
+        <option value="cinetrust_score">Highest CineTrust score</option>
+        <option value="confidence">Most confident</option>
+        <option value="n_reviews">Most reviewed</option>
+        <option value="gap">Biggest gap vs plain average</option>
+      </select>
+      <label class="toggle"><input id="alerts" type="checkbox"> Farming alerts only</label>
+    </section>
+
+    <section id="grid" class="grid" aria-live="polite"></section>
+    <p id="empty" class="muted" hidden>No movies match.</p>
+
+    <details class="how">
+      <summary>How CineTrust works</summary>
+      <ol>
+        <li><b>Many sources, no single owner.</b> Scores come from TMDB, IMDb, Rotten Tomatoes, Metacritic and Trakt. With 3+ sources, none can make up more than 35% of the final score.</li>
+        <li><b>Every review is checked for farming.</b> Copy-paste text, accounts posting in bursts, sudden waves of 1/10 or 10/10 reviews, and ratings that don't match the text all lower a review's trust.</li>
+        <li><b>Small samples don't win.</b> Two perfect reviews are pulled toward the typical score until more evidence arrives.</li>
+        <li><b>Explainable.</b> Open any movie to see each source's weight and why reviews were down-weighted.</li>
+      </ol>
+    </details>
+
+    <footer class="foot">
+      <p id="updated"></p>
+      <p>Built on Databricks: Auto Loader, Lakeflow pipelines, MLflow and Unity Catalog.</p>
+      <p class="tmdb">
+        Movie data and posters from <a href="https://www.themoviedb.org/">TMDB</a>.
+        This product uses the TMDB API but is not endorsed or certified by TMDB.
+      </p>
+    </footer>
+  </main>
+
+  <dialog id="details" aria-labelledby="d-title">
+    <form method="dialog" class="close-row"><button aria-label="Close">✕</button></form>
+    <div id="d-body"></div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,660 @@
+{
+ "generated_at": "2026-01-01T00:00:00+00:00",
+ "demo": true,
+ "movies": [
+  {
+   "imdb_id": "tt9000005",
+   "title": "Glass Orchard",
+   "poster_path": null,
+   "release_date": "2026-10-03",
+   "cinetrust_score": 84.2,
+   "naive_review_average": 55.2,
+   "confidence": 0.992,
+   "controversy": 4.0,
+   "n_sources": 6,
+   "n_reviews": 71,
+   "n_suspicious_reviews": 29,
+   "farming_alert": true,
+   "breakdown": {
+    "imdb": {
+     "score": 85.0,
+     "share": 0.209
+    },
+    "rotten_tomatoes": {
+     "score": 79.0,
+     "share": 0.209
+    },
+    "metacritic": {
+     "score": 89.0,
+     "share": 0.209
+    },
+    "tmdb": {
+     "score": 89.0,
+     "share": 0.136
+    },
+    "trakt_reviews": {
+     "score": 81.5,
+     "share": 0.119
+    },
+    "tmdb_reviews": {
+     "score": 80.7,
+     "share": 0.118
+    }
+   },
+   "flagged_reviews": [
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.012,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-15T07:22:14+00:00",
+     "text": "Worst movie of the year and a total waste of money. The world-building was pointless and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.013,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-15T06:21:27+00:00",
+     "text": "Worst movie of the year and a total waste of money. The cinematography was painful and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.017,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-15T06:59:00+00:00",
+     "text": "Worst movie of the year and a total waste of money. The world-building was painful and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.024,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:32:57+00:00",
+     "text": "Worst movie of the year and a total waste of money. The villain was painful and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T07:21:55+00:00",
+     "text": "Worst movie of the year and a total waste of money. The lead was boring and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T07:20:44+00:00",
+     "text": "Worst movie of the year and a total waste of money. The lead was lazy and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T07:16:42+00:00",
+     "text": "Worst movie of the year and a total waste of money. The action was lazy and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T07:16:38+00:00",
+     "text": "Worst movie of the year and a total waste of money. The editing was terrible and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T07:15:50+00:00",
+     "text": "Worst movie of the year and a total waste of money. The action was terrible and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T07:14:53+00:00",
+     "text": "Worst movie of the year and a total waste of money. The score was awful and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T07:14:00+00:00",
+     "text": "Worst movie of the year and a total waste of money. The editing was awful and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T07:10:17+00:00",
+     "text": "Worst movie of the year and a total waste of money. The script was terrible and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T07:09:09+00:00",
+     "text": "Worst movie of the year and a total waste of money. The third act was terrible and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T07:06:33+00:00",
+     "text": "Worst movie of the year and a total waste of money. The villain was boring and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:51:51+00:00",
+     "text": "Worst movie of the year and a total waste of money. The script was painful and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:50:41+00:00",
+     "text": "Worst movie of the year and a total waste of money. The humour was boring and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:46:13+00:00",
+     "text": "Worst movie of the year and a total waste of money. The third act was pointless and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:36:27+00:00",
+     "text": "Worst movie of the year and a total waste of money. The humour was painful and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:31:54+00:00",
+     "text": "Worst movie of the year and a total waste of money. The script was lazy and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:26:20+00:00",
+     "text": "Worst movie of the year and a total waste of money. The humour was pointless and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:22:58+00:00",
+     "text": "Worst movie of the year and a total waste of money. The villain was pointless and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:16:19+00:00",
+     "text": "Worst movie of the year and a total waste of money. The script was painful and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:11:29+00:00",
+     "text": "Worst movie of the year and a total waste of money. The humour was boring and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:10:08+00:00",
+     "text": "Worst movie of the year and a total waste of money. The dialogue was awful and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    },
+    {
+     "source": "trakt",
+     "rating": 1.0,
+     "trust": 0.025,
+     "reasons": [
+      "near_duplicate_text",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-15T06:07:06+00:00",
+     "text": "Worst movie of the year and a total waste of money. The soundtrack was painful and the plot made no sense at all. Everyone involved should be embarrassed. Save your money and do not watch this garbage in theatres, wait for it to hit streaming if you must."
+    }
+   ]
+  },
+  {
+   "imdb_id": "tt9000001",
+   "title": "The Lantern Keeper",
+   "poster_path": null,
+   "release_date": "2026-10-03",
+   "cinetrust_score": 79.8,
+   "naive_review_average": 82.8,
+   "confidence": 0.992,
+   "controversy": 3.1,
+   "n_sources": 6,
+   "n_reviews": 43,
+   "n_suspicious_reviews": 0,
+   "farming_alert": false,
+   "breakdown": {
+    "imdb": {
+     "score": 80.0,
+     "share": 0.206
+    },
+    "rotten_tomatoes": {
+     "score": 74.0,
+     "share": 0.206
+    },
+    "metacritic": {
+     "score": 82.0,
+     "share": 0.206
+    },
+    "tmdb": {
+     "score": 83.0,
+     "share": 0.147
+    },
+    "trakt_reviews": {
+     "score": 81.0,
+     "share": 0.12
+    },
+    "tmdb_reviews": {
+     "score": 80.3,
+     "share": 0.114
+    }
+   },
+   "flagged_reviews": []
+  },
+  {
+   "imdb_id": "tt9000004",
+   "title": "Midnight Ferry",
+   "poster_path": null,
+   "release_date": "2026-10-03",
+   "cinetrust_score": 71.9,
+   "naive_review_average": 72.2,
+   "confidence": 0.992,
+   "controversy": 4.5,
+   "n_sources": 6,
+   "n_reviews": 36,
+   "n_suspicious_reviews": 0,
+   "farming_alert": false,
+   "breakdown": {
+    "imdb": {
+     "score": 69.0,
+     "share": 0.207
+    },
+    "rotten_tomatoes": {
+     "score": 80.0,
+     "share": 0.207
+    },
+    "metacritic": {
+     "score": 69.0,
+     "share": 0.207
+    },
+    "tmdb": {
+     "score": 68.0,
+     "share": 0.156
+    },
+    "tmdb_reviews": {
+     "score": 70.7,
+     "share": 0.118
+    },
+    "trakt_reviews": {
+     "score": 74.4,
+     "share": 0.106
+    }
+   },
+   "flagged_reviews": []
+  },
+  {
+   "imdb_id": "tt9000002",
+   "title": "Orbit of Ashes",
+   "poster_path": null,
+   "release_date": "2026-10-03",
+   "cinetrust_score": 65.4,
+   "naive_review_average": 64.3,
+   "confidence": 0.991,
+   "controversy": 2.7,
+   "n_sources": 6,
+   "n_reviews": 30,
+   "n_suspicious_reviews": 0,
+   "farming_alert": false,
+   "breakdown": {
+    "imdb": {
+     "score": 62.0,
+     "share": 0.212
+    },
+    "rotten_tomatoes": {
+     "score": 67.0,
+     "share": 0.212
+    },
+    "metacritic": {
+     "score": 68.0,
+     "share": 0.212
+    },
+    "tmdb": {
+     "score": 63.0,
+     "share": 0.141
+    },
+    "tmdb_reviews": {
+     "score": 69.0,
+     "share": 0.113
+    },
+    "trakt_reviews": {
+     "score": 63.5,
+     "share": 0.109
+    }
+   },
+   "flagged_reviews": []
+  },
+  {
+   "imdb_id": "tt9000003",
+   "title": "Paper Tigers",
+   "poster_path": null,
+   "release_date": "2026-10-03",
+   "cinetrust_score": 46.3,
+   "naive_review_average": 63.7,
+   "confidence": 0.992,
+   "controversy": 6.5,
+   "n_sources": 6,
+   "n_reviews": 57,
+   "n_suspicious_reviews": 15,
+   "farming_alert": true,
+   "breakdown": {
+    "imdb": {
+     "score": 42.0,
+     "share": 0.208
+    },
+    "rotten_tomatoes": {
+     "score": 38.0,
+     "share": 0.208
+    },
+    "metacritic": {
+     "score": 47.0,
+     "share": 0.208
+    },
+    "tmdb": {
+     "score": 47.0,
+     "share": 0.143
+    },
+    "trakt_reviews": {
+     "score": 56.2,
+     "share": 0.124
+    },
+    "tmdb_reviews": {
+     "score": 56.9,
+     "share": 0.107
+    }
+   },
+   "flagged_reviews": [
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.06,
+     "reasons": [
+      "account_burst",
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-14T10:33:31+00:00",
+     "text": "On a big screen, the soundtrack was gorgeous more than I expected. The pacing felt lazy and disappointing even on a rewatch. Honestly, the humour was touching especially in the second half."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.07,
+     "reasons": [
+      "account_burst",
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-14T10:40:55+00:00",
+     "text": "As a longtime fan, the humour was touching especially in the second half. I hated the director, confusing despite the hype. Honestly, the director was excellent which carried the whole film."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.08,
+     "reasons": [
+      "account_burst",
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-14T10:07:12+00:00",
+     "text": "Weirdly, I would recommend it, the action is superb. I loved the dialogue, touching and it stuck with me. Really gorgeous work on the third act from the very first scene."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.09,
+     "reasons": [
+      "account_burst",
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-14T10:51:11+00:00",
+     "text": "The villain felt impressive and superb in a crowded Tuesday showing. Weirdly, the cinematography was brilliant even on a rewatch. Really memorable work on the script and my partner agreed. The pacing felt predictable and messy especially in the second half."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.111,
+     "reasons": [
+      "account_burst",
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-14T11:09:35+00:00",
+     "text": "I loved the pacing, superb for a 114-minute runtime. I loved the cast, wonderful for a 99-minute runtime. Surprisingly, I would recommend it, the lead is charming. I loved the editing, brilliant from the very first scene."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.168,
+     "reasons": [
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-14T11:03:46+00:00",
+     "text": "As a longtime fan, I would recommend it, the lead is powerful. Overall, the cast was excellent despite the hype."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.171,
+     "reasons": [
+      "account_burst",
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-14T10:48:11+00:00",
+     "text": "I loved the ending, wonderful which carried the whole film. Really powerful work on the humour compared to last year's films. Really gorgeous work on the script more than I expected."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.201,
+     "reasons": [
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-14T11:23:31+00:00",
+     "text": "The third act felt wonderful and gorgeous and it stuck with me. The soundtrack felt wonderful and stunning and my partner agreed."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.232,
+     "reasons": [
+      "account_burst",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-14T11:16:19+00:00",
+     "text": "Really gorgeous work on the dialogue from the very first scene. Honestly, the cinematography was thrilling for a 158-minute runtime. I loved the lead, brilliant which carried the whole film. Weirdly, the score was impressive more than I expected."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.252,
+     "reasons": [
+      "account_burst",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-14T10:17:54+00:00",
+     "text": "The villain felt charming and impressive from the very first scene. In my opinion, I would recommend it, the editing is powerful. Really stunning work on the soundtrack even on a rewatch. Really touching work on the lead more than I expected."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.263,
+     "reasons": [
+      "account_burst",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-14T10:55:25+00:00",
+     "text": "Surprisingly, I would recommend it, the director is charming. Honestly, I would recommend it, the score is touching. Really clever work on the score which carried the whole film. The ending felt powerful and memorable and my partner agreed."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.3,
+     "reasons": [
+      "account_burst",
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-14T10:34:05+00:00",
+     "text": "In my opinion, I would recommend it, the pacing is stunning. In my opinion, I would recommend it, the lead is excellent. As a longtime fan, the action was touching especially in the second half. Without spoilers, I would recommend it, the editing is touching."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.302,
+     "reasons": [
+      "coordinated_wave",
+      "statistical_outlier"
+     ],
+     "created_at": "2026-10-14T10:58:06+00:00",
+     "text": "On a big screen, the script was powerful and my partner agreed. I loved the score, wonderful and it stuck with me. For me, the humour was gripping even on a rewatch."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.353,
+     "reasons": [
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-14T10:29:48+00:00",
+     "text": "Compared to the trailer, I would recommend it, the cinematography is charming. I loved the humour, charming especially in the second half. The soundtrack felt touching and gorgeous from the very first scene. I loved the editing, excellent compared to last year's films."
+    },
+    {
+     "source": "trakt",
+     "rating": 10.0,
+     "trust": 0.488,
+     "reasons": [
+      "coordinated_wave"
+     ],
+     "created_at": "2026-10-14T10:34:19+00:00",
+     "text": "The soundtrack felt excellent and powerful compared to last year's films. The ending felt clever and powerful compared to last year's films. Really gorgeous work on the editing and I did not expect that. Compared to the trailer, the soundtrack was brilliant in a crowded IMAX showing."
+    }
+   ]
+  }
+ ]
+}

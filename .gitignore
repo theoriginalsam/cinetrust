@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+dist/
+.databricks/
+data/
+.env
+mlruns/
+
+# Real exported API data (TMDB/YouTube terms forbid republishing); the sample file is synthetic.
+site/leaderboard.json

@@ -1,0 +1,15 @@
+resources:
+  pipelines:
+    cinetrust_lakehouse:
+      name: cinetrust-lakehouse-${bundle.target}
+      catalog: ${var.catalog}
+      schema: ${resources.schemas.cinetrust_schema.name}
+      serverless: true
+      channel: CURRENT
+      continuous: false
+      libraries:
+        - file:
+            path: ../pipelines/cinetrust_dlt.py
+      configuration:
+        cinetrust.landing_path: /Volumes/${var.catalog}/${var.schema}/landing
+        cinetrust.src_path: ${workspace.file_path}/src

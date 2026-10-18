@@ -1,0 +1,21 @@
+resources:
+  schemas:
+    cinetrust_schema:
+      catalog_name: ${var.catalog}
+      name: ${var.schema}
+      comment: CineTrust lakehouse (bronze/silver/gold) and trust model.
+
+  volumes:
+    landing:
+      catalog_name: ${var.catalog}
+      schema_name: ${resources.schemas.cinetrust_schema.name}
+      name: landing
+      volume_type: MANAGED
+      comment: Raw API envelopes (JSONL) picked up by Auto Loader.
+
+    site:
+      catalog_name: ${var.catalog}
+      schema_name: ${resources.schemas.cinetrust_schema.name}
+      name: site
+      volume_type: MANAGED
+      comment: leaderboard.json exported for the public static site (site/).

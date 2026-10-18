@@ -1,0 +1,9 @@
+# Databricks App entry point (the bundle deploys the repo root as the app source; see resources/app.yml).
+command: ["python", "app/main.py"]
+env:
+  - name: DATABRICKS_WAREHOUSE_ID
+    valueFrom: sql-warehouse
+  - name: CINETRUST_CATALOG
+    value: workspace
+  - name: CINETRUST_SCHEMA
+    value: cinetrust

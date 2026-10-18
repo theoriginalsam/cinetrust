@@ -1,0 +1,38 @@
+# Databricks Asset Bundle: deploy everything with `databricks bundle deploy`.
+bundle:
+  name: cinetrust
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Unity Catalog catalog. Databricks Free Edition ships with `workspace`.
+    default: workspace
+  schema:
+    description: Schema that holds the volume, tables and registered model.
+    default: cinetrust
+  secret_scope:
+    description: Secret scope holding tmdb_token, omdb_key and trakt_client_id.
+    default: cinetrust
+  region:
+    description: ISO-3166 region for TMDB "now playing".
+    default: US
+  max_movies:
+    default: "25"
+  warehouse_id:
+    description: SQL warehouse the app reads through (Free Edition ships one).
+    lookup:
+      warehouse: Serverless Starter Warehouse
+
+targets:
+  dev:
+    default: true
+    workspace:
+      root_path: ~/.bundle/${bundle.name}/${bundle.target}
+
+  prod:
+    variables:
+      schema: cinetrust_prod
+    workspace:
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}

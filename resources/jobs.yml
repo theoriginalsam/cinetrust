@@ -1,0 +1,90 @@
+resources:
+  jobs:
+    # Daily: pull fresh reviews -> refresh the medallion tables -> score trust + consensus ratings
+    # -> export the public site's leaderboard.json.
+    cinetrust_daily:
+      name: cinetrust-daily-${bundle.target}
+      schedule:
+        quartz_cron_expression: "0 0 6 * * ?"
+        timezone_id: UTC
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: ingest
+          environment_key: ingest_env
+          spark_python_task:
+            python_file: ../jobs/ingest.py
+            parameters:
+              - --src=${workspace.file_path}/src
+              - --landing=/Volumes/${var.catalog}/${var.schema}/landing
+              - --region=${var.region}
+              - --max-movies=${var.max_movies}
+              - --secret-scope=${var.secret_scope}
+
+        - task_key: refresh_lakehouse
+          depends_on:
+            - task_key: ingest
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.cinetrust_lakehouse.id}
+
+        - task_key: score
+          depends_on:
+            - task_key: refresh_lakehouse
+          environment_key: ml_env
+          spark_python_task:
+            python_file: ../jobs/score.py
+            parameters:
+              - --src=${workspace.file_path}/src
+              - --catalog=${var.catalog}
+              - --schema=${var.schema}
+
+        # Public read-only site: one leaderboard.json in the `site` volume (see site/README).
+        - task_key: export_site
+          depends_on:
+            - task_key: score
+          environment_key: export_env
+          spark_python_task:
+            python_file: ../jobs/export_site.py
+            parameters:
+              - --src=${workspace.file_path}/src
+              - --catalog=${var.catalog}
+              - --schema=${var.schema}
+
+      environments:
+        - environment_key: export_env
+          spec:
+            client: "2"
+        - environment_key: ingest_env
+          spec:
+            client: "2"
+            dependencies:
+              - requests>=2.31
+        - environment_key: ml_env
+          spec:
+            client: "2"
+            dependencies:
+              - mlflow>=2.14
+              - scikit-learn>=1.3
+
+    # Weekly: retrain the anti-farming model; champion/challenger promotion in Unity Catalog.
+    cinetrust_train:
+      name: cinetrust-train-${bundle.target}
+      schedule:
+        quartz_cron_expression: "0 0 5 ? * MON"
+        timezone_id: UTC
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: train_trust_model
+          environment_key: ml_env
+          spark_python_task:
+            python_file: ../jobs/train_trust.py
+            parameters:
+              - --src=${workspace.file_path}/src
+              - --catalog=${var.catalog}
+              - --schema=${var.schema}
+      environments:
+        - environment_key: ml_env
+          spec:
+            client: "2"
+            dependencies:
+              - mlflow>=2.14
+              - scikit-learn>=1.3

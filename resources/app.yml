@@ -1,0 +1,12 @@
+resources:
+  apps:
+    cinetrust_app:
+      name: cinetrust-${bundle.target}
+      description: Farm-resistant ratings for movies in theatres, read live from the gold tables.
+      source_code_path: ..
+      resources:
+        - name: sql-warehouse
+          description: Warehouse the app queries the gold tables through.
+          sql_warehouse:
+            id: ${var.warehouse_id}
+            permission: CAN_USE
