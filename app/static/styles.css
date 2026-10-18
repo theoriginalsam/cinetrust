@@ -72,16 +72,19 @@ main { min-height: 70vh; outline: none; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* ---------- score ring ---------- */
-.ring { position: relative; flex: none; display: grid; place-items: center; }
-.ring svg { transform: rotate(-90deg); }
+.ring { position: relative; flex: none; display: block; line-height: 0; }
+.ring svg { display: block; transform: rotate(-90deg); overflow: visible; }
 .ring circle { fill: none; stroke-linecap: round; }
-.ring .track { stroke: rgba(255,255,255,.12); }
+.ring .disc { fill: rgba(11,13,18,.94); stroke: none; }
+.ring .track { stroke: rgba(255,255,255,.14); }
 .ring .val { transition: stroke-dashoffset .8s ease; }
-.ring .num { position: absolute; inset: 0; display: grid; place-items: center; font-weight: 800; letter-spacing: -.03em; }
-.ring .num small { display: block; font-size: 9px; letter-spacing: .1em; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-top: -2px; text-align: center; }
-.ring.lg .num { font-size: 30px; line-height: 1; }
-.ring.md .num { font-size: 17px; }
-.ring.sm .num { font-size: 13px; }
+.ring .num { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; }
+.ring .num b { font-weight: 800; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.ring .num small { display: block; margin-top: 5px; font-size: 9px; line-height: 1; letter-spacing: .12em; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+.ring.lg .num b { font-size: 36px; }
+.ring.md .num b { font-size: 19px; }
+.ring.sm .num b { font-size: 14px; }
+.ring.lg, .card .ring { filter: drop-shadow(0 4px 14px rgba(0,0,0,.55)); }
 .tier-high { stroke: var(--good); color: var(--good); }
 .tier-mid { stroke: var(--mid); color: var(--mid); }
 .tier-low { stroke: var(--bad); color: var(--bad); }
@@ -113,7 +116,7 @@ main { min-height: 70vh; outline: none; }
 .poster-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
 .card:hover .poster-wrap img { transform: scale(1.04); }
 .noposter { width: 100%; height: 100%; display: grid; place-items: center; text-align: center; padding: 14px; color: var(--muted); font-weight: 600; }
-.card .ring { position: absolute; left: 10px; bottom: 10px; background: rgba(11,13,18,.88); border-radius: 50%; padding: 3px; }
+.card .ring { position: absolute; left: 10px; bottom: 10px; }
 .card .flag { position: absolute; top: 10px; left: 10px; }
 .card .date-badge { position: absolute; top: 10px; right: 10px; background: rgba(11,13,18,.88); border-radius: 10px; padding: 5px 9px; text-align: center; font-weight: 800; line-height: 1.1; font-size: 15px; }
 .card .date-badge small { display: block; font-size: 10px; letter-spacing: .1em; color: var(--accent); }

@@ -48,15 +48,17 @@ async function getJSON(url) {
 }
 
 function ring(value, size = "md", kind = null, label = "") {
-  const px = { lg: 104, md: 54, sm: 42 }[size];
-  const stroke = { lg: 8, md: 5, sm: 4 }[size];
-  const r = (px - stroke) / 2, c = 2 * Math.PI * r;
+  const px = { lg: 112, md: 56, sm: 42 }[size];
+  const stroke = { lg: 7, md: 4.5, sm: 4 }[size];
+  const r = (px - stroke) / 2 - 1, c = 2 * Math.PI * r, mid = px / 2;
   const v = value == null ? 0 : Math.max(0, Math.min(100, value));
   const cls = kind || `tier-${tier(v)}`;
   return `<div class="ring ${size} ${cls}" role="img" aria-label="${label || "Score"} ${value == null ? "not available" : Math.round(v)}">
-    <svg width="${px}" height="${px}"><circle class="track" cx="${px / 2}" cy="${px / 2}" r="${r}" stroke-width="${stroke}"/>
-    <circle class="val" cx="${px / 2}" cy="${px / 2}" r="${r}" stroke-width="${stroke}" stroke-dasharray="${c}" stroke-dashoffset="${c * (1 - v / 100)}"/></svg>
-    <div class="num">${value == null ? "–" : Math.round(v)}${size === "lg" && label ? `<small>${esc(label)}</small>` : ""}</div></div>`;
+    <svg width="${px}" height="${px}" viewBox="0 0 ${px} ${px}" aria-hidden="true">
+      <circle class="disc" cx="${mid}" cy="${mid}" r="${mid}"/>
+      <circle class="track" cx="${mid}" cy="${mid}" r="${r}" stroke-width="${stroke}"/>
+      <circle class="val" cx="${mid}" cy="${mid}" r="${r}" stroke-width="${stroke}" stroke-dasharray="${c}" stroke-dashoffset="${c * (1 - v / 100)}"/></svg>
+    <div class="num"><b>${value == null ? "–" : Math.round(v)}</b>${size === "lg" && label ? `<small>${esc(label)}</small>` : ""}</div></div>`;
 }
 
 function poster(m, w = "w342") {
@@ -88,7 +90,7 @@ function heroHTML(list, upcoming) {
             ${m.trailer_key ? `<a class="btn btn-ghost" href="#/movie/${esc(m.imdb_id)}?trailer=1">▶ Watch trailer</a>` : ""}
           </div>
         </div>
-        ${upcoming ? ring(m.hype_score, "lg", "tier-hype", "hype") : ring(m.cinetrust_score, "lg", null, "score")}
+        ${upcoming ? ring(m.hype_score, "lg", "tier-hype", "hype") : ring(m.cinetrust_score, "lg", null, "CineTrust")}
       </div></div>
     </div>`).join("")}
     ${slides.length > 1 ? `<div class="dots">${slides.map((_, i) => `<button aria-label="Show slide ${i + 1}" class="${i === 0 ? "on" : ""}" data-i="${i}"></button>`).join("")}</div>` : ""}
