@@ -43,18 +43,32 @@ Since real farm labels don't exist, the evaluation attacks the system: it inject
 *and* paraphrased bomb/boost campaigns into the most-reviewed movies, then measures detection
 and how far each attack moves the score.
 
-| Metric | Value |
-|---|---|
-| Detection ROC-AUC | **0.9999** |
-| Farm recall (trust < 0.5) | **99.3%** |
-| Organic false-positive rate | **0.5%** |
-| Score shift from attack: naive review average | 19.1 pts |
-| Score shift: multi-source consensus, no trust weights | 2.9 pts |
-| Score shift: **full CineTrust** | **0.8 pts (96% less than naive)** |
+| Metric | Real data (Oct 2026) | Synthetic demo |
+|---|---|---|
+| Reviews evaluated | 8,526 (TMDB reviews + YouTube comments) | demo set |
+| Detection ROC-AUC | **0.996** | 0.9998 |
+| Farm recall (trust < 0.5) | **100%** | 97.3% |
+| Organic false-positive rate | **4.1%** | 0.5% |
+| Score shift from attack: naive review average | 70.7 pts | 19.1 pts |
+| Score shift: multi-source consensus, no trust weights | 14.1 pts | 2.9 pts |
+| Score shift: **full CineTrust** | **3.7 pts (95% less than naive)** | **0.9 pts (95% less)** |
 
-> ⚠️ These numbers come from the synthetic demo dataset (`python scripts/local_demo.py`).
-> Re-run `cinetrust-train` on real ingested data and report those numbers instead. On real data,
-> any existing farms are counted as "organic", so detection numbers come out conservative.
+Real-data numbers come from the `cinetrust-train` run on 2026-10-18 (MLflow experiment
+`/Users/<you>/cinetrust`). Three campaigns of about 200 reviews each were injected into the
+most-reviewed movies currently in theatres. The naive and CineTrust shifts are compared on the
+two attacks where the movie already had rated reviews. Caveats:
+
+- **Detection is conservative.** Any farms already in the real data count as "organic", so
+  some of the 4.1% "false positives" may be real farm reviews.
+- **The weak spot is the paraphrased boost.** On a movie with almost no rated reviews, a
+  208-review boost still moved CineTrust by 18.5 pts, even though every injected review was
+  flagged. Down-weighted reviews still count a little, and with no organic ratings to anchor
+  the score, volume wins. Averaged over all three attacks, CineTrust moved 8.6 pts versus 14.1
+  for the untrusted consensus.
+- Only two review sources are live (Trakt isn't connected), so the 35% per-source cap does less
+  than it would with more sources.
+
+Re-run the synthetic numbers with `python scripts/local_demo.py`.
 
 In the demo, a review bomb drags *Glass Orchard*'s plain average down to **55**. CineTrust still
 rates it **84**, close to its critics' consensus, and raises a `farming_alert`.

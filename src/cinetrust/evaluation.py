@@ -78,7 +78,11 @@ def evaluate(predict_fn: PredictFn, reviews: pd.DataFrame, scores: pd.DataFrame,
         a["cinetrust_shift"] = round(abs(after.at[m, "cinetrust_score"] - before.at[m, "cinetrust_score"]), 2)
         a["farm_recall"] = round(float(flagged[hit["imdb_id"].eq(m) & hit["is_farm"]].mean()), 3)
 
-    naive = np.mean([a["naive_shift"] for a in attacks])
+    # A movie with no rated reviews has no naive average before the attack, so compare naive vs
+    # CineTrust only on attacks where both are defined.
+    comparable = [a for a in attacks if pd.notna(a["naive_shift"])]
+    naive = np.mean([a["naive_shift"] for a in comparable]) if comparable else np.nan
+    ct_comparable = np.mean([a["cinetrust_shift"] for a in comparable]) if comparable else np.nan
     ct = np.mean([a["cinetrust_shift"] for a in attacks])
     metrics = {
         "roc_auc": round(float(roc_auc_score(y, susp)), 4),
@@ -88,7 +92,7 @@ def evaluate(predict_fn: PredictFn, reviews: pd.DataFrame, scores: pd.DataFrame,
         "mean_naive_shift": round(float(naive), 2),
         "mean_untrusted_consensus_shift": round(float(np.mean([a["untrusted_consensus_shift"] for a in attacks])), 2),
         "mean_cinetrust_shift": round(float(ct), 2),
-        "shift_reduction_vs_naive": round(float(1 - ct / naive), 4) if naive else 0.0,
+        "shift_reduction_vs_naive": round(float(1 - ct_comparable / naive), 4) if naive else 0.0,
     }
     return {"metrics": metrics, "attacks": attacks, "n_organic": len(organic),
             "n_injected": int(y.sum())}
